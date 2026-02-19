@@ -119,6 +119,17 @@ double distanciaRecorrida(double v, double t) {
   return d;
 }
 
+// 2. Promedio de notas de un estudiante
+double promedioNotas(List<double> notas) {
+double suma = 0;
+for (double nota in notas) {
+suma += nota;
+}
+double promedio = suma / notas.length;
+print('El promedio de notas es: $promedio');
+return promedio;
+}
+
 // 4. Planilla de un empleado
 double calcularDevengado(String nombre, double horasLaboradas, double tarifaHora) {
 double totalDevengado = horasLaboradas * tarifaHora;
@@ -133,4 +144,26 @@ double calcularHipotenusa(double cateto1, double cateto2) {
 double hipotenusa = sqrt(pow(cateto1, 2) + pow(cateto2, 2));
 print('La hipotenusa del triángulo rectángulo es: $hipotenusa');
 return hipotenusa;
+}
+
+int fibonacci() {
+  print("FIBONACCI:");
+  int a = 0;
+  int b = 1;
+
+  print(a); // Imprime 0
+  print(b); // Imprime 1
+
+  while (true) {
+    int siguiente = a + b;
+
+    if (siguiente > 100) {
+      break;
+    }
+
+    print(siguiente);
+
+    a = b;
+    b = siguiente;
+  }
 }
