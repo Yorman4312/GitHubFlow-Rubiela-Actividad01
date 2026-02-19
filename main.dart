@@ -118,3 +118,19 @@ double distanciaRecorrida(double v, double t) {
   print('La distancia recorrida es: $d km');
   return d;
 }
+
+// 4. Planilla de un empleado
+double calcularDevengado(String nombre, double horasLaboradas, double tarifaHora) {
+double totalDevengado = horasLaboradas * tarifaHora;
+print('Nombre del empleado: $nombre');
+print('Horas laboradas: $horasLaboradas');
+print('Total devengado: \$$totalDevengado');
+return totalDevengado;
+}
+
+// 5. Calcular la hipotenusa de un triángulo rectángulo
+double calcularHipotenusa(double cateto1, double cateto2) {
+double hipotenusa = sqrt(pow(cateto1, 2) + pow(cateto2, 2));
+print('La hipotenusa del triángulo rectángulo es: $hipotenusa');
+return hipotenusa;
+}
