@@ -1,5 +1,11 @@
 import 'dart:io';
-import 'dart:math';
+import './distanciaRecorrida.dart';
+import './promedioNotas.dart';
+import './puntajeFutbol.dart';
+import './plantillaEmpleado.dart';
+import './hipotenusa.dart';
+import './cAf.dart';
+import './fibonnaci.dart';
 
 void main() {
   int opcion = 0;
@@ -17,7 +23,7 @@ void main() {
     print(' 4. Planilla de un empleado');
     print(' 5. Hipotenusa de un triángulo rectángulo');
     print(' 6. Convertir Celsius a Fahrenheit');
-    print(' 7. Serie de Fibonacci');
+    print(' 7. Serie Fibonacci');
     print(' 8. Salir');
     print('-------------------------------------');
     stdout.write(' Seleccione una opción: ');
@@ -42,6 +48,12 @@ void main() {
         print('--- Promedio de Notas ---');
         stdout.write('¿Cuántas notas desea ingresar? ');
         int cantidad = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
+
+        if (cantidad <= 0) {
+          print('Debe ingresar al menos una nota.');
+          break;
+        }
+
         List<double> notas = [];
         for (int i = 1; i <= cantidad; i++) {
           stdout.write('Ingrese la nota $i: ');
@@ -100,7 +112,11 @@ void main() {
 
       case 7:
         print('');
-        fibonacci();
+        print('--- Serie Fibonacci ---');
+        stdout.write('Mostrar serie hasta qué número máximo? ');
+        int limite = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
+        print('');
+        fibonacci(limite);
         break;
 
       case 8:
@@ -116,74 +132,4 @@ void main() {
         break;
     }
   }
-}
-
-// 1. Distancia recorrida de un automovil con velocidad constante
-double distanciaRecorrida(double v, double t) {
-  double d = v * t;
-  print('La distancia recorrida es: $d km');
-  return d;
-}
-
-// 2. Promedio de notas de un estudiante
-double promedioNotas(List<double> notas) {
-  double suma = 0;
-  for (double nota in notas) {
-    suma += nota;
-  }
-  double promedio = suma / notas.length;
-  print('El promedio de notas es: $promedio');
-  return promedio;
-}
-
-// 3. Puntaje para un equipo de fútbol basado en los resultados de los partidos
-int calcularPuntaje(int victorias, int empates, int derrotas) {
-  int puntos = (victorias * 3) + (empates * 1) + (derrotas * 0);
-  print('Partidos ganados:   $victorias');
-  print('Partidos empatados: $empates');
-  print('Partidos perdidos:  $derrotas');
-  print('Puntos totales:     $puntos');
-  return puntos;
-}
-
-// 4. Planilla de un empleado
-double calcularDevengado(String nombre, double horasLaboradas, double tarifaHora) {
-  double totalDevengado = horasLaboradas * tarifaHora;
-  print('Nombre del empleado: $nombre');
-  print('Horas laboradas:     $horasLaboradas');
-  print('Total devengado:     \$$totalDevengado');
-  return totalDevengado;
-}
-
-// 5. Calcular la hipotenusa de un triángulo rectángulo
-double calcularHipotenusa(double cateto1, double cateto2) {
-  double hipotenusa = sqrt(pow(cateto1, 2) + pow(cateto2, 2));
-  print('La hipotenusa del triángulo rectángulo es: $hipotenusa');
-  return hipotenusa;
-}
-
-// 6. Transformar Celsius a Fahrenheit
-double celsiusAFahrenheit(double celsius) {
-  double fahrenheit = (celsius * 9 / 5) + 32;
-  print('$celsius °C equivalen a $fahrenheit °F');
-  return fahrenheit;
-}
-
-// 7. Serie de Fibonacci (números menores o iguales a 100)
-void fibonacci() {
-  print('--- Serie de Fibonacci (hasta 100) ---');
-  int a = 0;
-  int b = 1;
-
-  stdout.write('$a, $b');
-
-  while (true) {
-    int siguiente = a + b;
-    if (siguiente > 100) break;
-    stdout.write(', $siguiente');
-    a = b;
-    b = siguiente;
-  }
-
-  print('');
 }
