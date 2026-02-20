@@ -130,6 +130,16 @@ print('El promedio de notas es: $promedio');
 return promedio;
 }
 
+// 3. Puntaje para un equipo de fútbol basado en los resultados de los partidos
+int calcularPuntaje(int victorias, int empates, int derrotas) {
+  int puntos = (victorias * 3) + (empates * 1) + (derrotas * 0);
+  print('Partidos ganados:  $victorias');
+  print('Partidos empatados: $empates');
+  print('Partidos perdidos:  $derrotas');
+  print('Puntos totales:     $puntos');
+  return puntos;
+}
+
 // 4. Planilla de un empleado
 double calcularDevengado(String nombre, double horasLaboradas, double tarifaHora) {
 double totalDevengado = horasLaboradas * tarifaHora;
@@ -144,6 +154,13 @@ double calcularHipotenusa(double cateto1, double cateto2) {
 double hipotenusa = sqrt(pow(cateto1, 2) + pow(cateto2, 2));
 print('La hipotenusa del triángulo rectángulo es: $hipotenusa');
 return hipotenusa;
+}
+
+// 6. Transformar Celsius a Fahrenheit
+double celsiusAFahrenheit(double celsius) {
+  double fahrenheit = (celsius * 9 / 5) + 32;
+  print('$celsius °C equivalen a $fahrenheit °F');
+  return fahrenheit;
 }
 
 int fibonacci() {
