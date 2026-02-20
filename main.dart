@@ -8,7 +8,7 @@ void main() {
   print('     BIENVENIDO A LA APLICACIÓN DE CÁLCULO');
   print('==========================================');
 
-  while (opcion != 7) {
+  while (opcion != 8) {
     print('');
     print('---------- MENÚ PRINCIPAL ----------');
     print(' 1. Distancia recorrida de un automóvil');
@@ -17,7 +17,8 @@ void main() {
     print(' 4. Planilla de un empleado');
     print(' 5. Hipotenusa de un triángulo rectángulo');
     print(' 6. Convertir Celsius a Fahrenheit');
-    print(' 7. Salir');
+    print(' 7. Serie Fibonacci');
+    print(' 8. Salir');
     print('-------------------------------------');
     stdout.write(' Seleccione una opción: ');
 
@@ -41,6 +42,12 @@ void main() {
         print('--- Promedio de Notas ---');
         stdout.write('¿Cuántas notas desea ingresar? ');
         int cantidad = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
+
+        if (cantidad <= 0) {
+          print('Debe ingresar al menos una nota.');
+          break;
+        }
+
         List<double> notas = [];
         for (int i = 1; i <= cantidad; i++) {
           stdout.write('Ingrese la nota $i: ');
@@ -99,6 +106,15 @@ void main() {
 
       case 7:
         print('');
+        print('--- Serie Fibonacci ---');
+        stdout.write('Mostrar serie hasta qué número máximo? ');
+        int limite = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
+        print('');
+        fibonacci(limite);
+        break;
+
+      case 8:
+        print('');
         print('==========================================');
         print('   Gracias por usar la aplicación. ¡Hasta luego!');
         print('==========================================');
@@ -106,33 +122,36 @@ void main() {
 
       default:
         print('');
-        print('Opción no válida. Por favor ingrese un número del 1 al 7.');
+        print('Opción no válida. Por favor ingrese un número del 1 al 8.');
         break;
     }
   }
 }
 
-// 1. Distancia recorrida de un automovil con velocidad constante.
+
+// 1. Distancia recorrida
 double distanciaRecorrida(double v, double t) {
   double d = v * t;
   print('La distancia recorrida es: $d km');
   return d;
 }
 
-// 2. Promedio de notas de un estudiante
+
+// 2. Promedio de notas
 double promedioNotas(List<double> notas) {
-double suma = 0;
-for (double nota in notas) {
-suma += nota;
-}
-double promedio = suma / notas.length;
-print('El promedio de notas es: $promedio');
-return promedio;
+  double suma = 0;
+  for (double nota in notas) {
+    suma += nota;
+  }
+  double promedio = suma / notas.length;
+  print('El promedio de notas es: $promedio');
+  return promedio;
 }
 
-// 3. Puntaje para un equipo de fútbol basado en los resultados de los partidos
+
+// 3. Puntaje fútbol
 int calcularPuntaje(int victorias, int empates, int derrotas) {
-  int puntos = (victorias * 3) + (empates * 1) + (derrotas * 0);
+  int puntos = (victorias * 3) + (empates * 1);
   print('Partidos ganados:  $victorias');
   print('Partidos empatados: $empates');
   print('Partidos perdidos:  $derrotas');
@@ -140,41 +159,47 @@ int calcularPuntaje(int victorias, int empates, int derrotas) {
   return puntos;
 }
 
-// 4. Planilla de un empleado
+
+// 4. Planilla empleado
 double calcularDevengado(String nombre, double horasLaboradas, double tarifaHora) {
-double totalDevengado = horasLaboradas * tarifaHora;
-print('Nombre del empleado: $nombre');
-print('Horas laboradas: $horasLaboradas');
-print('Total devengado: \$$totalDevengado');
-return totalDevengado;
+  double totalDevengado = horasLaboradas * tarifaHora;
+  print('Nombre del empleado: $nombre');
+  print('Horas laboradas: $horasLaboradas');
+  print('Total devengado: \$$totalDevengado');
+  return totalDevengado;
 }
 
-// 5. Calcular la hipotenusa de un triángulo rectángulo
+
+// 5. Hipotenusa
 double calcularHipotenusa(double cateto1, double cateto2) {
-double hipotenusa = sqrt(pow(cateto1, 2) + pow(cateto2, 2));
-print('La hipotenusa del triángulo rectángulo es: $hipotenusa');
-return hipotenusa;
+  double hipotenusa = sqrt(pow(cateto1, 2) + pow(cateto2, 2));
+  print('La hipotenusa del triángulo rectángulo es: $hipotenusa');
+  return hipotenusa;
 }
 
-// 6. Transformar Celsius a Fahrenheit
+
+// 6. Celsius a Fahrenheit
 double celsiusAFahrenheit(double celsius) {
   double fahrenheit = (celsius * 9 / 5) + 32;
   print('$celsius °C equivalen a $fahrenheit °F');
   return fahrenheit;
 }
 
-int fibonacci() {
-  print("FIBONACCI:");
+
+// 7. Fibonacci
+void fibonacci(int limite) {
+  print("Serie Fibonacci:");
+
   int a = 0;
   int b = 1;
 
-  print(a); // Imprime 0
-  print(b); // Imprime 1
+  if (limite >= 0) print(a);
+  if (limite >= 1) print(b);
 
   while (true) {
     int siguiente = a + b;
 
-    if (siguiente > 100) {
+    if (siguiente > limite) {
       break;
     }
 
