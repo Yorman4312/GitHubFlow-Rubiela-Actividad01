@@ -1,5 +1,11 @@
 import 'dart:io';
-import 'dart:math';
+import './distanciaRecorrida.dart';
+import './promedioNotas.dart';
+import './puntajeFutbol.dart';
+import './plantillaEmpleado.dart';
+import './hipotenusa.dart';
+import './cAf.dart';
+import './fibonnaci.dart';
 
 void main() {
   int opcion = 0;
@@ -125,87 +131,5 @@ void main() {
         print('Opción no válida. Por favor ingrese un número del 1 al 8.');
         break;
     }
-  }
-}
-
-
-// 1. Distancia recorrida
-double distanciaRecorrida(double v, double t) {
-  double d = v * t;
-  print('La distancia recorrida es: $d km');
-  return d;
-}
-
-
-// 2. Promedio de notas
-double promedioNotas(List<double> notas) {
-  double suma = 0;
-  for (double nota in notas) {
-    suma += nota;
-  }
-  double promedio = suma / notas.length;
-  print('El promedio de notas es: $promedio');
-  return promedio;
-}
-
-
-// 3. Puntaje fútbol
-int calcularPuntaje(int victorias, int empates, int derrotas) {
-  int puntos = (victorias * 3) + (empates * 1);
-  print('Partidos ganados:  $victorias');
-  print('Partidos empatados: $empates');
-  print('Partidos perdidos:  $derrotas');
-  print('Puntos totales:     $puntos');
-  return puntos;
-}
-
-
-// 4. Planilla empleado
-double calcularDevengado(String nombre, double horasLaboradas, double tarifaHora) {
-  double totalDevengado = horasLaboradas * tarifaHora;
-  print('Nombre del empleado: $nombre');
-  print('Horas laboradas: $horasLaboradas');
-  print('Total devengado: \$$totalDevengado');
-  return totalDevengado;
-}
-
-
-// 5. Hipotenusa
-double calcularHipotenusa(double cateto1, double cateto2) {
-  double hipotenusa = sqrt(pow(cateto1, 2) + pow(cateto2, 2));
-  print('La hipotenusa del triángulo rectángulo es: $hipotenusa');
-  return hipotenusa;
-}
-
-
-// 6. Celsius a Fahrenheit
-double celsiusAFahrenheit(double celsius) {
-  double fahrenheit = (celsius * 9 / 5) + 32;
-  print('$celsius °C equivalen a $fahrenheit °F');
-  return fahrenheit;
-}
-
-
-// 7. Fibonacci
-void fibonacci(int limite) {
-  print("Serie Fibonacci:");
-
-  int a = 0;
-  int b = 1;
-
-  if (limite >= 0) print(a);
-  if (limite >= 1) print(b);
-
-  while (true) {
-    int siguiente = a + b;
-
-    if (siguiente > limite) {
-      break;
-    }
-
-    print(siguiente);
-
-    a = b;
-    b = siguiente;
   }
 }
